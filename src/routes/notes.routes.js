@@ -1,17 +1,17 @@
 const { Router } = require("express");
 
-const NotesController = require("../controllers/NotesController");
+const MoviesController = require("../controllers/MoviesController");
 const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
-const notesRoutes = Router();
+const moviesRoutes = Router();
 
-const notesController = new NotesController();
+const moviesController = new MoviesController();
 
-notesRoutes.use(ensureAuthenticated);
+moviesRoutes.use(ensureAuthenticated);
 
-notesRoutes.post("/", notesController.create);
-notesRoutes.get("/:id", notesController.show);
-notesRoutes.delete("/:id", notesController.delete);
-notesRoutes.get("/", notesController.index);
+moviesRoutes.post("/", moviesController.create);
+moviesRoutes.get("/:id", moviesController.show);
+moviesRoutes.delete("/:id", moviesController.delete);
+moviesRoutes.get("/", moviesController.index);
 
-module.exports = notesRoutes;
+module.exports = moviesRoutes;

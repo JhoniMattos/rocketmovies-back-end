@@ -6,9 +6,10 @@ const tagsRoutes = require('./tags.routes')
 const sessionsRoutes = require('./sessions.routes')
 
 const routes = Router()
+
 routes.use('/users', usersRoutes)
 routes.use('/sessions', sessionsRoutes)
-routes.use('/notes', notesRoutes)
+routes.use('/movies', notesRoutes)
 routes.use('/tags', tagsRoutes)
 
 module.exports = routes
