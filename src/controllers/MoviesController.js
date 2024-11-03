@@ -30,12 +30,12 @@ class MoviesController {
 
     const note = await knex("movie_notes").where({ id }).first()
     const tags = await knex("movie_tags").where({ note_id: id }).orderBy("name")
-    const links = await knex("movie_links").where({ note_id: id}).orderBy("created_at")
+    // const links = await knex("movie_links").where({ note_id: id}).orderBy("created_at")
 
     return response.json({
       ...note,
       tags,
-      links
+     // links
     })
   } 
 
@@ -69,7 +69,7 @@ class MoviesController {
       .innerJoin("movie_notes", "movie_notes.id", "movie_tags.note_id")
       .orderBy("movie_notes.title")
 
-    }else {
+    } else {
 
     notes = await knex("movie_notes")
     .where({ user_id })
@@ -82,8 +82,8 @@ class MoviesController {
       const noteTags = userTags.filter(tag => tag.note_id === note.id)
 
       return {
-        ...movie_notes,
-        tags: noteTags
+        ...note,
+        movie_tags: noteTags
       }
     })
     
